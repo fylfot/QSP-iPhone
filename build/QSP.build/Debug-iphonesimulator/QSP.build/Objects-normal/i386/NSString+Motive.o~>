@@ -1,0 +1,5 @@
+/Users/test/Sandbox/Work/My/QSP/Classes/NSString/NSString+Motive.m: In function '-[NSString(MotiveExtension) fileSizeAtPath]':
+/Users/test/Sandbox/Work/My/QSP/Classes/NSString/NSString+Motive.m:45: warning: 'fileAttributesAtPath:traverseLink:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.0.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSFileManager.h:162)
+/Users/test/Sandbox/Work/My/QSP/Classes/NSString/NSString+Motive.m: At top level:
+/Users/test/Sandbox/Work/My/QSP/Classes/NSString/NSString+Motive.m:85: warning: incomplete implementation of category 'MotiveExtension'
+/Users/test/Sandbox/Work/My/QSP/Classes/NSString/NSString+Motive.m:85: warning: method definition for '-unicharString' not found

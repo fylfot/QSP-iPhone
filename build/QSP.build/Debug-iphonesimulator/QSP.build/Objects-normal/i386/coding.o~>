@@ -1,0 +1,7 @@
+/Users/test/Sandbox/Work/My/QSP/Classes/Core/coding.c: In function 'qspFromQSPString':
+/Users/test/Sandbox/Work/My/QSP/Classes/Core/coding.c:299: warning: passing argument 2 of 'wcstombs' from incompatible pointer type
+/Users/test/Sandbox/Work/My/QSP/Classes/Core/coding.c:301: warning: passing argument 2 of 'wcstombs' from incompatible pointer type
+/Users/test/Sandbox/Work/My/QSP/Classes/Core/coding.c: In function 'qspCodeWriteIntVal':
+/Users/test/Sandbox/Work/My/QSP/Classes/Core/coding.c:467: warning: passing argument 2 of 'qspAddText' from incompatible pointer type
+/Users/test/Sandbox/Work/My/QSP/Classes/Core/coding.c: In function 'qspCodeWriteVal':
+/Users/test/Sandbox/Work/My/QSP/Classes/Core/coding.c:484: warning: passing argument 2 of 'qspAddText' from incompatible pointer type

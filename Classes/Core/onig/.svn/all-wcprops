@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/qsp/!svn/ver/387/trunk/qsp/qsp/src/onig
+END
+regenc.c
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/qsp/!svn/ver/1/trunk/qsp/qsp/src/onig/regenc.c
+END
+regparse.c
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/qsp/!svn/ver/386/trunk/qsp/qsp/src/onig/regparse.c
+END
+regenc.h
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/qsp/!svn/ver/386/trunk/qsp/qsp/src/onig/regenc.h
+END
+regtrav.c
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/qsp/!svn/ver/1/trunk/qsp/qsp/src/onig/regtrav.c
+END
+config.h
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/qsp/!svn/ver/387/trunk/qsp/qsp/src/onig/config.h
+END
+oniguruma.h
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/qsp/!svn/ver/386/trunk/qsp/qsp/src/onig/oniguruma.h
+END
+regparse.h
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/qsp/!svn/ver/1/trunk/qsp/qsp/src/onig/regparse.h
+END
+regexec.c
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/qsp/!svn/ver/386/trunk/qsp/qsp/src/onig/regexec.c
+END
+regversion.c
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/qsp/!svn/ver/386/trunk/qsp/qsp/src/onig/regversion.c
+END
+regsyntax.c
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/qsp/!svn/ver/1/trunk/qsp/qsp/src/onig/regsyntax.c
+END
+st.c
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/qsp/!svn/ver/1/trunk/qsp/qsp/src/onig/st.c
+END
+regerror.c
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/qsp/!svn/ver/1/trunk/qsp/qsp/src/onig/regerror.c
+END
+st.h
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/qsp/!svn/ver/1/trunk/qsp/qsp/src/onig/st.h
+END
+regcomp.c
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/qsp/!svn/ver/386/trunk/qsp/qsp/src/onig/regcomp.c
+END
+regint.h
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/qsp/!svn/ver/387/trunk/qsp/qsp/src/onig/regint.h
+END
