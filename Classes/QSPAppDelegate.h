@@ -12,11 +12,11 @@
 
 @interface QSPAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
-    QSPViewController *viewController;
+    UINavigationController *navigationController;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet QSPViewController *viewController;
+@property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
 
 @end
 

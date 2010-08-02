@@ -14,14 +14,17 @@
 #include <wchar.h>
 
 #define wideCharStringFromString(XXX) ((QSP_CHAR *)[XXX cStringUsingEncoding:NSUTF32LittleEndianStringEncoding])
-#define stringWithWideCharString(XXX) ((XXX != nil) ? ((NSString *)CFStringCreateWithBytes(nil, (const UInt8 *)XXX, wcslen(XXX), kCFStringEncodingUTF32LE, YES)) : nil)
+#define stringWithWideCharString(XXX) ((XXX != nil) ? ((NSString *)CFStringCreateWithBytes(nil, (const UInt8 *)XXX, wcslen(XXX) * 4, kCFStringEncodingUTF32LE, YES)) : nil)
 
 @implementation QSPAdapter
 
-SYNTHESIZE_SINGLETON_FOR_CLASS(QSPAdapter);
-// [NSString stringWithWideCharString:(const char *) my_wchar_t_string encoding:NSUTF32StringEncoding]
+@synthesize worldLoaded, gameInProgress;
 
-// [urString cStringUsingEncoding:NSUTF32StringEncoding]
+SYNTHESIZE_SINGLETON_FOR_CLASS(QSPAdapter);
+
+- (void)beginGame {
+    gameInProgress = YES;
+}
 
 /*
  Above we have wrapped C functions calls:
@@ -231,12 +234,15 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(QSPAdapter);
 #pragma warning Can be errors;
 - (BOOL)loadGameWorld:(NSString *)file {
     BOOL result = QSPLoadGameWorld(wideCharStringFromString(file));
+    worldLoaded = result;
     return result;
 }
 
 #pragma warning Can be errors;
 - (BOOL)loadGameWorldFromData:(NSData *)data fromFile:(NSString *)file {
-    return QSPLoadGameWorldFromData([data bytes], [data length], wideCharStringFromString(file));
+    BOOL result = QSPLoadGameWorldFromData([data bytes], [data length], wideCharStringFromString(file));
+    worldLoaded = result;
+    return result;
 }
 
 - (BOOL)saveGame:(NSString *)file isRefresh:(BOOL)isRefresh {

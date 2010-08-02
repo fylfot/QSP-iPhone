@@ -9,9 +9,16 @@
 #import <Foundation/Foundation.h>
 
 @class StateData;
+@class ActionData;
 @interface QSPAdapter : NSObject {
-    
+    BOOL worldLoaded;
+    BOOL gameInProgress;
 }
+
+@property (assign, readonly, getter=isWorldLoaded) BOOL worldLoaded;
+@property (assign, readonly, getter=isGameInProgress) BOOL gameInProgress;
+
+- (void)beginGame;
 
 // Tested
 - (id)init;
@@ -35,7 +42,7 @@
 - (void)setInputStringText:(NSString *)string;//(const QSP_CHAR *str);
 - (NSInteger)getActionsCount;
 - (BOOL)executeSelectedActionCode:(BOOL)isRefresh;
-- (BOOL)setSelActionIndex:(NSInteger)actionIndex isRefresh:(BOOL)isRefresh;
+- (BOOL)setSelectedActionIndex:(NSInteger)actionIndex isRefresh:(BOOL)isRefresh;
 - (NSInteger)getSelectedActionIndex;
 - (BOOL)isActionsChanged;
 - (NSInteger)getObjectsCount;
@@ -57,6 +64,7 @@
 - (BOOL)openSavedGame:(NSString *)file isRefresh:(BOOL)isRefresh;
 - (BOOL)restartGame:(BOOL)isRefresh;
 - (void)selectMenuItem:(NSInteger)index;
+- (ActionData *)getActionData:(NSInteger)actionIndex;
 
 - (NSError *)getLastErrorData;
 

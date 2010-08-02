@@ -7,13 +7,15 @@
 //
 
 #import "QSPAppDelegate.h"
-#import "QSPViewController.h"
 #import "QSPAdapter.h"
+#import "PlayerMainMenu.h"
+
+#import "World.h"
 
 @implementation QSPAppDelegate
 
 @synthesize window;
-@synthesize viewController;
+@synthesize navigationController;
 
 
 #pragma mark -
@@ -24,18 +26,23 @@
     // Override point for customization after application launch.
 
     // Add the view controller's view to the window and display.
-    [window addSubview:viewController.view];
+    [window addSubview:navigationController.view];
     [window makeKeyAndVisible];
+    
+    [World loadObjects];
+    [World saveObjects];
+    
+    [[[[navigationController viewControllers] firstObject] view] addSubview:[[PlayerMainMenu sharedPlayerMainMenu] view]];
     
     NSString *path = [[NSBundle mainBundle] pathForResource:@"star_keeper" ofType:@"qsp"];
 //    NSData *data = [NSData dataWithContentsOfFile:path];
-    [[QSPAdapter sharedQSPAdapter] loadGameWorld:path];  
+//    [[QSPAdapter sharedQSPAdapter] loadGameWorld:path];  
 //    [[QSPAdapter sharedQSPAdapter] loadGameWorldFromData:data fromFile:path];
-    [[QSPAdapter sharedQSPAdapter] restartGame:YES];
+//    [[QSPAdapter sharedQSPAdapter] restartGame:YES];
     
-    NSLog(@"Error: %@", [[QSPAdapter sharedQSPAdapter] getLastErrorData]);
+//    NSLog(@"Error: %@", [[QSPAdapter sharedQSPAdapter] getLastErrorData]);
     
-    UIAlertViewQuick(@"QSP Version", [[QSPAdapter sharedQSPAdapter] getMainDesc], @"Ok");
+//    UIAlertViewQuick(@"QSP Version", [[QSPAdapter sharedQSPAdapter] getMainDesc], @"Ok");
     
     return YES;
 }
@@ -90,7 +97,7 @@
 
 
 - (void)dealloc {
-    [viewController release];
+    [navigationController release];
     [window release];
     [super dealloc];
 }

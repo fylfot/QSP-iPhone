@@ -7,4 +7,5 @@
     #import <UIKit/UIKit.h>
     #import "CommonCategories.h"
     #import "QSPAdapter.h"
+    #import "Constants.h"
 #endif
