@@ -16,11 +16,159 @@
 #define wideCharStringFromString(XXX) ((QSP_CHAR *)[XXX cStringUsingEncoding:NSUTF32LittleEndianStringEncoding])
 #define stringWithWideCharString(XXX) ((XXX != nil) ? ((NSString *)CFStringCreateWithBytes(nil, (const UInt8 *)XXX, wcslen(XXX) * 4, kCFStringEncodingUTF32LE, YES)) : nil)
 
+// QSP C Callbacks calls inplementation:
+
+void qsp_adapter_debug(const QSP_CHAR *str) {
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObject:stringWithWideCharString(str) forKey:@"str"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"QSP_CALL_DEBUG" object:nil userInfo:params];
+}
+
+QSP_BOOL qsp_adapter_isplayingfile(const QSP_CHAR *file) {
+#pragma warning NOT IMPLEMENTED!
+    return NO;
+//    NSDictionary *params = [NSDictionary dictionaryWithObject:stringWithWideCharString(file) forKey:@"file"];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"QSP_CALL_ISPLAYINGFILE" object:nil userInfo:params];
+}
+
+void qsp_adapter_playfile(const QSP_CHAR *file, int volume) {
+    
+    NSNumber *number = [NSNumber numberWithInt:volume];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:stringWithWideCharString(file), @"file", number, @"volume", nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"QSP_CALL_PLAYFILE" object:nil userInfo:params];
+}
+
+void qsp_adapter_closefile(const QSP_CHAR *file) {
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObject:stringWithWideCharString(file) forKey:@"file"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"QSP_CALL_CLOSEFILE" object:nil userInfo:params];
+}
+
+void qsp_adapter_showimage(const QSP_CHAR *file) {
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObject:stringWithWideCharString(file) forKey:@"file"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"QSP_CALL_SHOWIMAGE" object:nil userInfo:params];
+}
+
+void qsp_adapter_showwindow(int type, QSP_BOOL isShow) {
+    
+    NSNumber *number = [NSNumber numberWithBool:isShow];
+    NSNumber *typeNumber = [NSNumber numberWithInt:type];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:number, @"isShow", typeNumber, @"type", nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"QSP_CALL_SHOWWINDOW" object:nil userInfo:params];
+}
+
+void qsp_adapter_deletemenu() {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"QSP_CALL_DELETEMENU" object:nil userInfo:nil];
+}
+
+void qsp_adapter_addmenuitem(const QSP_CHAR *name, const QSP_CHAR *imgPath) {
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:stringWithWideCharString(name), @"name", stringWithWideCharString(imgPath), @"imgPath", nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"QSP_CALL_ADDMENUITEM" object:nil userInfo:params];
+}
+
+void qsp_adapter_showmenu() {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"QSP_CALL_SHOWMENU" object:nil userInfo:nil];
+}
+
+void qsp_adapter_showmsgstr(const QSP_CHAR *str) {
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObject:stringWithWideCharString(str) forKey:@"str"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"QSP_CALL_SHOWMSGSTR" object:nil userInfo:params];
+}
+
+void qsp_adapter_refreshhint(QSP_BOOL isRedraw) {
+    
+    NSNumber *number = [NSNumber numberWithBool:isRedraw];
+    NSDictionary *params = [NSDictionary dictionaryWithObject:number forKey:@"isRedraw"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"QSP_CALL_REFRESHINT" object:nil userInfo:params];
+}
+
+void qsp_adapter_settimer(int msecs) {
+    
+    NSNumber *number = [NSNumber numberWithInt:msecs];
+    NSDictionary *params = [NSDictionary dictionaryWithObject:number forKey:@"msecs"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"QSP_CALL_SETTIMER" object:nil userInfo:params];
+    
+//    execCounter:(BOOL)isRefresh // Каждые 0.5 секунды
+}
+
+void qsp_adapter_setinputstrtext(const QSP_CHAR *text) {
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObject:stringWithWideCharString(text) forKey:@"text"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"QSP_CALL_SETINPUTSTRTEXT" object:nil userInfo:params];
+}
+
+void qsp_adapter_system(const QSP_CHAR *str) {
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObject:stringWithWideCharString(str) forKey:@"str"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"QSP_CALL_SYSTEM" object:nil userInfo:params];
+}
+
+void qsp_adapter_opengamestatus(const QSP_CHAR *file) {
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObject:stringWithWideCharString(file) forKey:@"file"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"QSP_CALL_OPENGAMESTATUS" object:nil userInfo:params];
+}
+
+void qsp_adapter_savegamestatus(const QSP_CHAR *file) {
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObject:stringWithWideCharString(file) forKey:@"file"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"QSP_CALL_SAVEGAMESTATUS" object:nil userInfo:params];
+}
+
+void qsp_adapter_sleep(int msecs) {
+    NSNumber *number = [NSNumber numberWithInt:msecs];
+    NSDictionary *params = [NSDictionary dictionaryWithObject:number forKey:@"msecs"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"QSP_CALL_SLEEP" object:nil userInfo:params];
+}
+
+int qsp_adapter_getmscount() {
+#pragma warning NOT IMPLEMENTED!
+    return 0;
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"QSP_CALL_GETMSCOUNT" object:nil userInfo:params];
+}
+
+void qsp_adapter_inputbox(const QSP_CHAR *text, QSP_CHAR *buffer, int maxLen) {
+#pragma warning NOT IMPLEMENTED!
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"QSP_CALL_INPUTBOX" object:nil userInfo:params];
+}
+
+// 
+
+
 @implementation QSPAdapter
 
 @synthesize worldLoaded, gameInProgress;
 
 SYNTHESIZE_SINGLETON_FOR_CLASS(QSPAdapter);
+
+
+
+- (void)registrateCallbacks {
+    QSPSetCallBack(QSP_CALL_DEBUG, (void *)&qsp_adapter_debug);
+    QSPSetCallBack(QSP_CALL_ISPLAYINGFILE, (void *)&qsp_adapter_isplayingfile);/* QSP_BOOL func(const QSP_CHAR *file) */
+    QSPSetCallBack(QSP_CALL_PLAYFILE, (void *)&qsp_adapter_playfile);/* void func(const QSP_CHAR *file, int volume) */
+    QSPSetCallBack(QSP_CALL_CLOSEFILE, (void *)&qsp_adapter_closefile);/* void func(const QSP_CHAR *file) */
+    QSPSetCallBack(QSP_CALL_SHOWIMAGE, (void *)&qsp_adapter_showimage);/* void func(const QSP_CHAR *file) */
+    QSPSetCallBack(QSP_CALL_SHOWWINDOW, (void *)&qsp_adapter_showwindow);/* void func(int type, QSP_BOOL isShow) */
+    QSPSetCallBack(QSP_CALL_DELETEMENU, (void *)&qsp_adapter_deletemenu);/* void func() */
+    QSPSetCallBack(QSP_CALL_ADDMENUITEM, (void *)&qsp_adapter_addmenuitem);/* void func(const QSP_CHAR *name, const QSP_CHAR *imgPath) */
+    QSPSetCallBack(QSP_CALL_SHOWMENU, (void *)&qsp_adapter_showmenu);/* void func() */
+    QSPSetCallBack(QSP_CALL_SHOWMSGSTR, (void *)&qsp_adapter_showmsgstr);/* void func(const QSP_CHAR *str) */
+    QSPSetCallBack(QSP_CALL_REFRESHINT, (void *)&qsp_adapter_refreshhint);/* void func(QSP_BOOL isRedraw) */
+    QSPSetCallBack(QSP_CALL_SETTIMER, (void *)&qsp_adapter_settimer);/* void func(int msecs) */
+    QSPSetCallBack(QSP_CALL_SETINPUTSTRTEXT, (void *)&qsp_adapter_setinputstrtext);/* void func(const QSP_CHAR *text) */
+    QSPSetCallBack(QSP_CALL_SYSTEM, (void *)&qsp_adapter_system);/* void func(const QSP_CHAR *str) */
+    QSPSetCallBack(QSP_CALL_OPENGAMESTATUS, (void *)&qsp_adapter_opengamestatus);/* void func(const QSP_CHAR *file) */
+    QSPSetCallBack(QSP_CALL_SAVEGAMESTATUS, (void *)&qsp_adapter_savegamestatus);/* void func(const QSP_CHAR *file) */
+    QSPSetCallBack(QSP_CALL_SLEEP, (void *)&qsp_adapter_sleep);/* void func(int msecs) */
+    QSPSetCallBack(QSP_CALL_GETMSCOUNT, (void *)&qsp_adapter_getmscount);/* int func() */
+    QSPSetCallBack(QSP_CALL_INPUTBOX, (void *)&qsp_adapter_inputbox);/* void func(const QSP_CHAR *text, QSP_CHAR *buffer, int maxLen) */
+}
 
 - (void)beginGame {
     gameInProgress = YES;
@@ -133,8 +281,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(QSPAdapter);
     return stringWithWideCharString(QSPGetCurLoc());
 }
 
-// 2
 - (NSString *)getMainDesc {
+    // SetLocale
+    setlocale(LC_ALL, "ru_RU.UTF-8");
     return stringWithWideCharString(QSPGetMainDesc());
 }
 

@@ -13,12 +13,10 @@
 
 @synthesize isThirdParty, name, fileHash, description, relativePath, currentState;
 
-static NSString *kIsThirdPartyKey = @"kIsThirdPartyKey";
 static NSString *kNameKey = @"kNameKey";
 static NSString *kFileHashKey = @"kFileHashKey";
 static NSString *kDescriptionKey = @"kDescriptionKey";
 static NSString *kRelativePathKey = @"kRelativePathKey";
-static NSString *kCurrentStateKey = @"kCurrentStateKey";
 
 static NSMutableArray *objects = nil;
 static World *selected = nil;
@@ -85,7 +83,7 @@ static NSString *documentPathInstance = nil;
     self.relativePath = (NSString *)[coder decodeObjectForKey:kRelativePathKey];
     self.description = (NSString *)[coder decodeObjectForKey:kDescriptionKey];
     self.name = (NSString *)[coder decodeObjectForKey:kNameKey];
-    self.fileHash = (NSString *)[coder decodeIntForKey:kFileHashKey];
+    self.fileHash = (NSInteger)[coder decodeIntForKey:kFileHashKey];
     self.currentState = WorldStateInvalid;
     return self;
 }

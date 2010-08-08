@@ -22,7 +22,7 @@
 SYNTHESIZE_SINGLETON_HEADER_FOR_CLASS(Settings);
 
 - (id)init;
-- (void)deinit;
+- (void)save;
 - (UIFont *)prefferedFont;
 
 @end

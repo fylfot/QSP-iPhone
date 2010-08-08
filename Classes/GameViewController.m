@@ -7,6 +7,7 @@
 //
 
 #import "GameViewController.h"
+#import "Settings.h"
 
 @implementation GameViewController
 
@@ -27,7 +28,8 @@
 }
 
 - (void)update {
-    [sceneView loadHTMLString:[NSString stringWithFormat:@"<div id='__iphone_size_hack'>%@</div>", [[QSPAdapter sharedQSPAdapter] getMainDesc]] baseURL:[NSURL URLWithString:nil]];
+//    NSLog(@"Main desc: \n%@\n", [[QSPAdapter sharedQSPAdapter] getMainDesc]);
+    [sceneView loadHTMLString:[NSString stringWithFormat:@"<div id='__iphone_size_hack' style='font-family:\"%@\";font-size:%@;'>%@</div>", [[Settings sharedSettings] fontFamily], [[Settings sharedSettings] fontWeight], [[QSPAdapter sharedQSPAdapter] getMainDesc]] baseURL:[NSURL URLWithString:nil]];
     [actionView reloadAllComponents];
 }
 

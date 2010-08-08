@@ -33,6 +33,11 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(PlayerSettings);
     [self.tableView reloadData];
 }
 
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [[Settings sharedSettings] save];
+}
+
 #pragma mark -
 #pragma mark Table view data source
 
@@ -100,7 +105,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(PlayerSettings);
 }
 
 - (IBAction)sliderValueChanged:(id)sender {
-    [[[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]] detailTextLabel] setText:[NSString stringWithFormat:@"%3.0f", [(UISlider *)sender value]]];
+    NSString *value = [NSString stringWithFormat:@"%3.0f", [(UISlider *)sender value]];
+    [[Settings sharedSettings] setFontWeight:value];
+    [[[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]] detailTextLabel] setText:value];
 }
 
 #pragma mark -

@@ -70,4 +70,19 @@
 
 SYNTHESIZE_SINGLETON_HEADER_FOR_CLASS(QSPAdapter);
 
+
+/*
+ BCOLOR // Background color (int32)
+ FCOLOR // Fontcolor (int32)
+ LCOLOR // Links color (int32)
+ FSIZE  // Font size
+ $FNAME // Font name
+ USEHTML
+ DISABLESCROLL // (not null, adding new line (no autoscroll))
+ NOSAVE (not null, save accessed)
+ $BACKIMAGE // Background image
+ 
+ Replacement of 0x10 & 0x13 to <br />
+ */
+
 @end

@@ -38,7 +38,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);
     return [UIFont fontWithName:self.fontFamily size:[self.fontWeight floatValue]];
 }
 
-- (void)deinit {
+- (void)save {
     [[NSUserDefaults standardUserDefaults] setObject:self.lastWorldPlayed forKey:@"com.jamg.qsp.settings.lastWorldPlayed"];
     [[NSUserDefaults standardUserDefaults] setObject:self.fontFamily forKey:@"com.jamg.qsp.settings.fontFamily"];
     [[NSUserDefaults standardUserDefaults] setObject:self.fontWeight forKey:@"com.jamg.qsp.settings.fontWeight"];

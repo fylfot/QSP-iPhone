@@ -6,6 +6,7 @@
     #import <Foundation/Foundation.h>
     #import <UIKit/UIKit.h>
     #import "CommonCategories.h"
+    #import <AppRegistrator.h>
     #import "QSPAdapter.h"
     #import "Constants.h"
 #endif

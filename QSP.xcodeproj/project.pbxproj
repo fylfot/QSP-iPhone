@@ -34,6 +34,7 @@
 		52121E141206DB9600AFEE3F /* World.m in Sources */ = {isa = PBXBuildFile; fileRef = 52121E131206DB9600AFEE3F /* World.m */; };
 		521220CB12076EA400AFEE3F /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 521220C912076EA400AFEE3F /* GameViewController.m */; };
 		521220CC12076EA400AFEE3F /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 521220CA12076EA400AFEE3F /* GameViewController.xib */; };
+		5268F10412081D5A00E57AA2 /* libAppRegistratorAPI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5268F10312081D5600E57AA2 /* libAppRegistratorAPI.a */; };
 		52D1D7781204D529008BAB0D /* _control.c in Sources */ = {isa = PBXBuildFile; fileRef = 52D1D7381204D529008BAB0D /* _control.c */; };
 		52D1D7791204D529008BAB0D /* actions.c in Sources */ = {isa = PBXBuildFile; fileRef = 52D1D7391204D529008BAB0D /* actions.c */; };
 		52D1D77A1204D529008BAB0D /* callbacks.c in Sources */ = {isa = PBXBuildFile; fileRef = 52D1D73B1204D529008BAB0D /* callbacks.c */; };
@@ -134,6 +135,23 @@
 		52D1DAAF1205F2FD008BAB0D /* star_keeper.qsp in Resources */ = {isa = PBXBuildFile; fileRef = 52D1DAAE1205F2FD008BAB0D /* star_keeper.qsp */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		5268F10212081D5600E57AA2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5268F0FE12081D5600E57AA2 /* AppRegistratorAPI.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D;
+			remoteInfo = AppRegistratorAPI;
+		};
+		5268F10D12081D6C00E57AA2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5268F0FE12081D5600E57AA2 /* AppRegistratorAPI.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteInfo = AppRegistratorAPI;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* QSPAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSPAppDelegate.h; sourceTree = "<group>"; };
@@ -173,6 +191,7 @@
 		521220C812076EA400AFEE3F /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		521220C912076EA400AFEE3F /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		521220CA12076EA400AFEE3F /* GameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameViewController.xib; sourceTree = "<group>"; };
+		5268F0FE12081D5600E57AA2 /* AppRegistratorAPI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AppRegistratorAPI.xcodeproj; path = ../AppRegistratorAPI/AppRegistratorAPI.xcodeproj; sourceTree = SOURCE_ROOT; };
 		52D1D7381204D529008BAB0D /* _control.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = _control.c; path = Core/_control.c; sourceTree = "<group>"; };
 		52D1D7391204D529008BAB0D /* actions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = actions.c; path = Core/actions.c; sourceTree = "<group>"; };
 		52D1D73A1204D529008BAB0D /* actions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = actions.h; path = Core/actions.h; sourceTree = "<group>"; };
@@ -379,6 +398,7 @@
 				52D1D8DE1204E385008BAB0D /* ExternalAccessory.framework in Frameworks */,
 				52D1D8E01204E385008BAB0D /* MapKit.framework in Frameworks */,
 				52D1D8E21204E385008BAB0D /* MessageUI.framework in Frameworks */,
+				5268F10412081D5A00E57AA2 /* libAppRegistratorAPI.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,6 +542,14 @@
 			name = World;
 			sourceTree = "<group>";
 		};
+		5268F0FF12081D5600E57AA2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5268F10312081D5600E57AA2 /* libAppRegistratorAPI.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		52D1D7371204D519008BAB0D /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -631,6 +659,7 @@
 		52D1D7BA1204D654008BAB0D /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				5268F0FE12081D5600E57AA2 /* AppRegistratorAPI.xcodeproj */,
 				52D1D7E31204D654008BAB0D /* RouteKit */,
 				52D1D7C31204D654008BAB0D /* ASIHTTPRequest */,
 				52D1D7E61204D655008BAB0D /* FontLabel */,
@@ -944,6 +973,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				5268F10E12081D6C00E57AA2 /* PBXTargetDependency */,
 			);
 			name = QSP;
 			productName = QSP;
@@ -960,12 +990,28 @@
 			hasScannedForEncodings = 1;
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 5268F0FF12081D5600E57AA2 /* Products */;
+					ProjectRef = 5268F0FE12081D5600E57AA2 /* AppRegistratorAPI.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				1D6058900D05DD3D006BFB54 /* QSP */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		5268F10312081D5600E57AA2 /* libAppRegistratorAPI.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libAppRegistratorAPI.a;
+			remoteRef = 5268F10212081D5600E57AA2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1D60588D0D05DD3D006BFB54 /* Resources */ = {
@@ -1100,6 +1146,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		5268F10E12081D6C00E57AA2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = AppRegistratorAPI;
+			targetProxy = 5268F10D12081D6C00E57AA2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1136,6 +1190,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = ../AppRegistratorAPI/;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				OTHER_CFLAGS = "-D_UNICODE";
 				PREBINDING = NO;
@@ -1151,6 +1206,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = ../AppRegistratorAPI/;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				OTHER_CFLAGS = "-D_UNICODE";
 				PREBINDING = NO;

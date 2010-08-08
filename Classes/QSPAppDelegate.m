@@ -12,6 +12,8 @@
 
 #import "World.h"
 
+#import <AppRegistrator.h>
+
 @implementation QSPAppDelegate
 
 @synthesize window;
@@ -34,7 +36,9 @@
     
     [[[[navigationController viewControllers] firstObject] view] addSubview:[[PlayerMainMenu sharedPlayerMainMenu] view]];
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"star_keeper" ofType:@"qsp"];
+    [UncaughtExceptionHandler installUncaughtExceptionHandler];
+    
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"star_keeper" ofType:@"qsp"];
 //    NSData *data = [NSData dataWithContentsOfFile:path];
 //    [[QSPAdapter sharedQSPAdapter] loadGameWorld:path];  
 //    [[QSPAdapter sharedQSPAdapter] loadGameWorldFromData:data fromFile:path];
@@ -43,7 +47,6 @@
 //    NSLog(@"Error: %@", [[QSPAdapter sharedQSPAdapter] getLastErrorData]);
     
 //    UIAlertViewQuick(@"QSP Version", [[QSPAdapter sharedQSPAdapter] getMainDesc], @"Ok");
-    
     return YES;
 }
 
