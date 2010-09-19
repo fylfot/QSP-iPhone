@@ -35,6 +35,16 @@
 		521220CB12076EA400AFEE3F /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 521220C912076EA400AFEE3F /* GameViewController.m */; };
 		521220CC12076EA400AFEE3F /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 521220CA12076EA400AFEE3F /* GameViewController.xib */; };
 		5268F10412081D5A00E57AA2 /* libAppRegistratorAPI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5268F10312081D5600E57AA2 /* libAppRegistratorAPI.a */; };
+		529BBF94121FB174000C78C1 /* continent.qsp in Resources */ = {isa = PBXBuildFile; fileRef = 529BBF93121FB174000C78C1 /* continent.qsp */; };
+		529BBF96121FB191000C78C1 /* level_13.qsp in Resources */ = {isa = PBXBuildFile; fileRef = 529BBF95121FB191000C78C1 /* level_13.qsp */; };
+		529BBF98121FB19F000C78C1 /* rullers_of_galaxy.qsp in Resources */ = {isa = PBXBuildFile; fileRef = 529BBF97121FB19F000C78C1 /* rullers_of_galaxy.qsp */; };
+		529BBF9A121FB1D1000C78C1 /* war_song.qsp in Resources */ = {isa = PBXBuildFile; fileRef = 529BBF99121FB1D1000C78C1 /* war_song.qsp */; };
+		52C61F87121C8924002012FA /* SelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C61F85121C8924002012FA /* SelectView.m */; };
+		52C61F8F121C8A07002012FA /* bottom_part.png in Resources */ = {isa = PBXBuildFile; fileRef = 52C61F8A121C8A07002012FA /* bottom_part.png */; };
+		52C61F90121C8A07002012FA /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 52C61F8B121C8A07002012FA /* button.png */; };
+		52C61F91121C8A07002012FA /* left_part.png in Resources */ = {isa = PBXBuildFile; fileRef = 52C61F8C121C8A07002012FA /* left_part.png */; };
+		52C61F92121C8A07002012FA /* right_part.png in Resources */ = {isa = PBXBuildFile; fileRef = 52C61F8D121C8A07002012FA /* right_part.png */; };
+		52C61F93121C8A07002012FA /* top_part.png in Resources */ = {isa = PBXBuildFile; fileRef = 52C61F8E121C8A07002012FA /* top_part.png */; };
 		52D1D7781204D529008BAB0D /* _control.c in Sources */ = {isa = PBXBuildFile; fileRef = 52D1D7381204D529008BAB0D /* _control.c */; };
 		52D1D7791204D529008BAB0D /* actions.c in Sources */ = {isa = PBXBuildFile; fileRef = 52D1D7391204D529008BAB0D /* actions.c */; };
 		52D1D77A1204D529008BAB0D /* callbacks.c in Sources */ = {isa = PBXBuildFile; fileRef = 52D1D73B1204D529008BAB0D /* callbacks.c */; };
@@ -192,6 +202,17 @@
 		521220C912076EA400AFEE3F /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		521220CA12076EA400AFEE3F /* GameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameViewController.xib; sourceTree = "<group>"; };
 		5268F0FE12081D5600E57AA2 /* AppRegistratorAPI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AppRegistratorAPI.xcodeproj; path = ../AppRegistratorAPI/AppRegistratorAPI.xcodeproj; sourceTree = SOURCE_ROOT; };
+		529BBF93121FB174000C78C1 /* continent.qsp */ = {isa = PBXFileReference; lastKnownFileType = file; path = continent.qsp; sourceTree = "<group>"; };
+		529BBF95121FB191000C78C1 /* level_13.qsp */ = {isa = PBXFileReference; lastKnownFileType = file; path = level_13.qsp; sourceTree = "<group>"; };
+		529BBF97121FB19F000C78C1 /* rullers_of_galaxy.qsp */ = {isa = PBXFileReference; lastKnownFileType = file; path = rullers_of_galaxy.qsp; sourceTree = "<group>"; };
+		529BBF99121FB1D1000C78C1 /* war_song.qsp */ = {isa = PBXFileReference; lastKnownFileType = file; path = war_song.qsp; sourceTree = "<group>"; };
+		52C61F84121C8924002012FA /* SelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectView.h; sourceTree = "<group>"; };
+		52C61F85121C8924002012FA /* SelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectView.m; sourceTree = "<group>"; };
+		52C61F8A121C8A07002012FA /* bottom_part.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bottom_part.png; path = Resources/bottom_part.png; sourceTree = "<group>"; };
+		52C61F8B121C8A07002012FA /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button.png; path = Resources/button.png; sourceTree = "<group>"; };
+		52C61F8C121C8A07002012FA /* left_part.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = left_part.png; path = Resources/left_part.png; sourceTree = "<group>"; };
+		52C61F8D121C8A07002012FA /* right_part.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = right_part.png; path = Resources/right_part.png; sourceTree = "<group>"; };
+		52C61F8E121C8A07002012FA /* top_part.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = top_part.png; path = Resources/top_part.png; sourceTree = "<group>"; };
 		52D1D7381204D529008BAB0D /* _control.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = _control.c; path = Core/_control.c; sourceTree = "<group>"; };
 		52D1D7391204D529008BAB0D /* actions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = actions.c; path = Core/actions.c; sourceTree = "<group>"; };
 		52D1D73A1204D529008BAB0D /* actions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = actions.h; path = Core/actions.h; sourceTree = "<group>"; };
@@ -450,6 +471,11 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				52C61F8A121C8A07002012FA /* bottom_part.png */,
+				52C61F8B121C8A07002012FA /* button.png */,
+				52C61F8C121C8A07002012FA /* left_part.png */,
+				52C61F8D121C8A07002012FA /* right_part.png */,
+				52C61F8E121C8A07002012FA /* top_part.png */,
 				52D1DAAD1205F2E8008BAB0D /* Game Worlds */,
 				52121D731206CF1F00AFEE3F /* background.png */,
 				52121C581206A0F400AFEE3F /* table_view_cell_nosingle_any_selected.png */,
@@ -499,6 +525,7 @@
 		52121CA01206B2A200AFEE3F /* Root */ = {
 			isa = PBXGroup;
 			children = (
+				52C61F83121C8911002012FA /* Common */,
 				521220C712076E5800AFEE3F /* World */,
 				52121DE31206D6FB00AFEE3F /* Worlds */,
 				52121CA11206B2AE00AFEE3F /* Settings */,
@@ -548,6 +575,15 @@
 				5268F10312081D5600E57AA2 /* libAppRegistratorAPI.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		52C61F83121C8911002012FA /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				52C61F84121C8924002012FA /* SelectView.h */,
+				52C61F85121C8924002012FA /* SelectView.m */,
+			);
+			name = Common;
 			sourceTree = "<group>";
 		};
 		52D1D7371204D519008BAB0D /* Core */ = {
@@ -954,6 +990,10 @@
 		52D1DAAD1205F2E8008BAB0D /* Game Worlds */ = {
 			isa = PBXGroup;
 			children = (
+				529BBF99121FB1D1000C78C1 /* war_song.qsp */,
+				529BBF97121FB19F000C78C1 /* rullers_of_galaxy.qsp */,
+				529BBF95121FB191000C78C1 /* level_13.qsp */,
+				529BBF93121FB174000C78C1 /* continent.qsp */,
 				52D1DAAE1205F2FD008BAB0D /* star_keeper.qsp */,
 			);
 			name = "Game Worlds";
@@ -1034,6 +1074,15 @@
 				52121D871206D1F800AFEE3F /* FontFamilies.xib in Resources */,
 				52121DE81206D70800AFEE3F /* Worlds.xib in Resources */,
 				521220CC12076EA400AFEE3F /* GameViewController.xib in Resources */,
+				52C61F8F121C8A07002012FA /* bottom_part.png in Resources */,
+				52C61F90121C8A07002012FA /* button.png in Resources */,
+				52C61F91121C8A07002012FA /* left_part.png in Resources */,
+				52C61F92121C8A07002012FA /* right_part.png in Resources */,
+				52C61F93121C8A07002012FA /* top_part.png in Resources */,
+				529BBF94121FB174000C78C1 /* continent.qsp in Resources */,
+				529BBF96121FB191000C78C1 /* level_13.qsp in Resources */,
+				529BBF98121FB19F000C78C1 /* rullers_of_galaxy.qsp in Resources */,
+				529BBF9A121FB1D1000C78C1 /* war_song.qsp in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1141,6 +1190,7 @@
 				52121DE71206D70800AFEE3F /* Worlds.m in Sources */,
 				52121E141206DB9600AFEE3F /* World.m in Sources */,
 				521220CB12076EA400AFEE3F /* GameViewController.m in Sources */,
+				52C61F87121C8924002012FA /* SelectView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

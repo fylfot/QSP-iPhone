@@ -8,25 +8,39 @@
 
 #import <UIKit/UIKit.h>
 
-
-@interface GameViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource, UIWebViewDelegate> {
-    IBOutlet UIWebView *sceneView;
-    IBOutlet UIWebView *inventoryView;
-    IBOutlet UIWebView *descriptionView;
-    IBOutlet UIPickerView *actionView;
+@class SelectView;
+@interface GameViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIWebViewDelegate, UIAlertViewDelegate> {
+    UIWebView *sceneView;
+    UITableView *inventoryView;
+    UIWebView *descriptionView;
+    SelectView *actionView;
     
-    IBOutlet UIScrollView *layoutView;
+    UIButton *descriptionButton;
+    UIButton *inventoryButton;
     
-    //IBOutlet UIWebView *actionView;
+    UIScrollView *layoutView;
+    NSInteger countOfFastClicking;
+    
+    NSArray *resultForInventory;
+    NSArray *resultForActions;
+    
+    CGFloat fontRowWeight;
 }
 
 @property (nonatomic, retain) IBOutlet UIWebView *sceneView;
-@property (nonatomic, retain) IBOutlet UIWebView *inventoryView;
+@property (nonatomic, retain) IBOutlet UITableView *inventoryView;
 @property (nonatomic, retain) IBOutlet UIWebView *descriptionView;
-@property (nonatomic, retain) IBOutlet UIPickerView *actionView;
+@property (nonatomic, retain) SelectView *actionView;
+
+@property (nonatomic, retain) IBOutlet UIButton *descriptionButton;
+@property (nonatomic, retain) IBOutlet UIButton *inventoryButton;
 
 @property (nonatomic, retain) IBOutlet UIScrollView *layoutView;
 
+- (IBAction)descriptionButtonClicked:(id)sender;
+- (IBAction)inventoryButtonClicked:(id)sender;
+
+- (void)bindObservers;
 - (void)update;
 
 @end

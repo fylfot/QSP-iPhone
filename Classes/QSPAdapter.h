@@ -10,24 +10,45 @@
 
 @class StateData;
 @class ActionData;
+@class ObjectData;
 @interface QSPAdapter : NSObject {
     BOOL worldLoaded;
     BOOL gameInProgress;
+
+    CGFloat updateTime;
+    NSInteger msecsFromLastCount;
+    NSTimer *timer;
+    BOOL isSleep;
 }
 
 @property (assign, readonly, getter=isWorldLoaded) BOOL worldLoaded;
 @property (assign, readonly, getter=isGameInProgress) BOOL gameInProgress;
+@property (assign) CGFloat updateTime;
+@property (assign) BOOL isSleep;
+@property (assign) NSInteger msecsFromLastCount;
 
 - (void)beginGame;
 
 // Tested
+
+// SYSTEM
 - (id)init;
+- (void)updateTickTimerDelay:(NSNotification *)notification;
+- (void)tickTimer;
 
 - (void)deInit;
+
+// ADAPTED
 - (NSString *)getVersion;
 - (NSString *)getMainDesc;
 - (NSString *)getQstFullPath;
 
+- (NSString *)getCurLoc;
+- (BOOL)loadGameWorld:(NSString *)file;
+- (BOOL)isMainDescChanged;
+- (NSString *)getVarsDesc;
+- (ActionData *)getActionData:(NSInteger)actionIndex;
+- (ObjectData *)getObjectData:(NSInteger)actionIndex;
 // Non tested
 
 - (BOOL)isInCallBack;
@@ -35,9 +56,6 @@
 - (StateData *)getCurrentStateData;
 - (NSString *)getCompiledDateTime;
 - (NSInteger)getFullRefreshCount;
-- (NSString *)getCurLoc;
-- (BOOL)isMainDescChanged;
-- (NSString *)getVarsDesc;
 - (BOOL)isVarsDescChanged;
 - (void)setInputStringText:(NSString *)string;//(const QSP_CHAR *str);
 - (NSInteger)getActionsCount;
@@ -58,13 +76,11 @@
 - (BOOL)execUserInput:(BOOL)isRefresh;
 - (BOOL)execLocationCode:(NSString *)name isRefresh:(BOOL)isRefresh;
 - (NSString *)getErrorDesc:(NSInteger)errorNumber;
-- (BOOL)loadGameWorld:(NSString *)file;
 - (BOOL)loadGameWorldFromData:(NSData *)data fromFile:(NSString *)file;//(const char *data, int dataSize, const QSP_CHAR *file);
 - (BOOL)saveGame:(NSString *)file isRefresh:(BOOL)isRefresh;
 - (BOOL)openSavedGame:(NSString *)file isRefresh:(BOOL)isRefresh;
 - (BOOL)restartGame:(BOOL)isRefresh;
 - (void)selectMenuItem:(NSInteger)index;
-- (ActionData *)getActionData:(NSInteger)actionIndex;
 
 - (NSError *)getLastErrorData;
 

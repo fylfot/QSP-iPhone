@@ -19,12 +19,17 @@
 // QSP C Callbacks calls inplementation:
 
 void qsp_adapter_debug(const QSP_CHAR *str) {
-    
-    NSDictionary *params = [NSDictionary dictionaryWithObject:stringWithWideCharString(str) forKey:@"str"];
+    TRACE();
+    NSString *adaptedText = stringWithWideCharString(str);
+    if (!adaptedText) {
+        return;
+    }
+    NSDictionary *params = [NSDictionary dictionaryWithObject:adaptedText forKey:@"str"];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"QSP_CALL_DEBUG" object:nil userInfo:params];
 }
 
 QSP_BOOL qsp_adapter_isplayingfile(const QSP_CHAR *file) {
+    TRACE();
 #pragma warning NOT IMPLEMENTED!
     return NO;
 //    NSDictionary *params = [NSDictionary dictionaryWithObject:stringWithWideCharString(file) forKey:@"file"];
@@ -32,121 +37,174 @@ QSP_BOOL qsp_adapter_isplayingfile(const QSP_CHAR *file) {
 }
 
 void qsp_adapter_playfile(const QSP_CHAR *file, int volume) {
-    
+    TRACE();
+    NSString *adaptedText = stringWithWideCharString(file);
+    if (!adaptedText) {
+        return;
+    }
     NSNumber *number = [NSNumber numberWithInt:volume];
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:stringWithWideCharString(file), @"file", number, @"volume", nil];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:adaptedText, @"file", number, @"volume", nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"QSP_CALL_PLAYFILE" object:nil userInfo:params];
 }
 
 void qsp_adapter_closefile(const QSP_CHAR *file) {
-    
-    NSDictionary *params = [NSDictionary dictionaryWithObject:stringWithWideCharString(file) forKey:@"file"];
+    TRACE();
+    NSString *adaptedText = stringWithWideCharString(file);
+    if (!adaptedText) {
+        return;
+    }
+    NSDictionary *params = [NSDictionary dictionaryWithObject:adaptedText forKey:@"file"];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"QSP_CALL_CLOSEFILE" object:nil userInfo:params];
 }
 
 void qsp_adapter_showimage(const QSP_CHAR *file) {
-    
-    NSDictionary *params = [NSDictionary dictionaryWithObject:stringWithWideCharString(file) forKey:@"file"];
+    TRACE();
+    NSString *adaptedText = stringWithWideCharString(file);
+    if (!adaptedText) {
+        return;
+    }
+    NSDictionary *params = [NSDictionary dictionaryWithObject:adaptedText forKey:@"file"];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"QSP_CALL_SHOWIMAGE" object:nil userInfo:params];
 }
 
-void qsp_adapter_showwindow(int type, QSP_BOOL isShow) {
-    
-    NSNumber *number = [NSNumber numberWithBool:isShow];
-    NSNumber *typeNumber = [NSNumber numberWithInt:type];
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:number, @"isShow", typeNumber, @"type", nil];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"QSP_CALL_SHOWWINDOW" object:nil userInfo:params];
-}
-
 void qsp_adapter_deletemenu() {
-    
+    TRACE();
     [[NSNotificationCenter defaultCenter] postNotificationName:@"QSP_CALL_DELETEMENU" object:nil userInfo:nil];
 }
 
 void qsp_adapter_addmenuitem(const QSP_CHAR *name, const QSP_CHAR *imgPath) {
+    TRACE();
+    NSString *adaptedText = stringWithWideCharString(name);
+    if (!adaptedText) {
+        return;
+    }
     
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:stringWithWideCharString(name), @"name", stringWithWideCharString(imgPath), @"imgPath", nil];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:adaptedText, @"name", stringWithWideCharString(imgPath), @"imgPath", nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"QSP_CALL_ADDMENUITEM" object:nil userInfo:params];
 }
 
 void qsp_adapter_showmenu() {
-    
+    TRACE();
     [[NSNotificationCenter defaultCenter] postNotificationName:@"QSP_CALL_SHOWMENU" object:nil userInfo:nil];
 }
 
-void qsp_adapter_showmsgstr(const QSP_CHAR *str) {
-    
-    NSDictionary *params = [NSDictionary dictionaryWithObject:stringWithWideCharString(str) forKey:@"str"];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"QSP_CALL_SHOWMSGSTR" object:nil userInfo:params];
-}
-
 void qsp_adapter_refreshhint(QSP_BOOL isRedraw) {
-    
+    TRACE();
+    if ([[QSPAdapter sharedQSPAdapter] isSleep]) {
+        return;
+    }
     NSNumber *number = [NSNumber numberWithBool:isRedraw];
     NSDictionary *params = [NSDictionary dictionaryWithObject:number forKey:@"isRedraw"];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"QSP_CALL_REFRESHINT" object:nil userInfo:params];
 }
 
 void qsp_adapter_settimer(int msecs) {
-    
+    TRACE();
     NSNumber *number = [NSNumber numberWithInt:msecs];
     NSDictionary *params = [NSDictionary dictionaryWithObject:number forKey:@"msecs"];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"QSP_CALL_SETTIMER" object:nil userInfo:params];
-    
 //    execCounter:(BOOL)isRefresh // Каждые 0.5 секунды
 }
 
-void qsp_adapter_setinputstrtext(const QSP_CHAR *text) {
-    
-    NSDictionary *params = [NSDictionary dictionaryWithObject:stringWithWideCharString(text) forKey:@"text"];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"QSP_CALL_SETINPUTSTRTEXT" object:nil userInfo:params];
-}
 
 void qsp_adapter_system(const QSP_CHAR *str) {
-    
-    NSDictionary *params = [NSDictionary dictionaryWithObject:stringWithWideCharString(str) forKey:@"str"];
+    TRACE();
+    NSString *adaptedText = stringWithWideCharString(str);
+    if (!adaptedText) {
+        return;
+    }
+    NSDictionary *params = [NSDictionary dictionaryWithObject:adaptedText forKey:@"str"];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"QSP_CALL_SYSTEM" object:nil userInfo:params];
 }
 
 void qsp_adapter_opengamestatus(const QSP_CHAR *file) {
+    TRACE();
+    NSString *adaptedText = stringWithWideCharString(file);
+    if (!adaptedText) {
+        return;
+    }
     
-    NSDictionary *params = [NSDictionary dictionaryWithObject:stringWithWideCharString(file) forKey:@"file"];
+    NSDictionary *params = [NSDictionary dictionaryWithObject:adaptedText forKey:@"file"];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"QSP_CALL_OPENGAMESTATUS" object:nil userInfo:params];
 }
 
 void qsp_adapter_savegamestatus(const QSP_CHAR *file) {
-    
-    NSDictionary *params = [NSDictionary dictionaryWithObject:stringWithWideCharString(file) forKey:@"file"];
+    TRACE();
+    NSString *adaptedText = stringWithWideCharString(file);
+    if (!adaptedText) {
+        return;
+    }
+    NSDictionary *params = [NSDictionary dictionaryWithObject:adaptedText forKey:@"file"];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"QSP_CALL_SAVEGAMESTATUS" object:nil userInfo:params];
 }
 
 void qsp_adapter_sleep(int msecs) {
+    TRACE();
+    [[QSPAdapter sharedQSPAdapter] setIsSleep:YES];
+    [[QSPAdapter sharedQSPAdapter] performSelector:@selector(wakeUp) withObject:nil afterDelay:msecs / 1000.0f];
     NSNumber *number = [NSNumber numberWithInt:msecs];
     NSDictionary *params = [NSDictionary dictionaryWithObject:number forKey:@"msecs"];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"QSP_CALL_SLEEP" object:nil userInfo:params];
 }
 
 int qsp_adapter_getmscount() {
-#pragma warning NOT IMPLEMENTED!
-    return 0;
-//    [[NSNotificationCenter defaultCenter] postNotificationName:@"QSP_CALL_GETMSCOUNT" object:nil userInfo:params];
+    TRACE();
+    NSInteger result = [[QSPAdapter sharedQSPAdapter] msecsFromLastCount];
+    [[QSPAdapter sharedQSPAdapter] setMsecsFromLastCount:0];
+    return result;
 }
 
 void qsp_adapter_inputbox(const QSP_CHAR *text, QSP_CHAR *buffer, int maxLen) {
-#pragma warning NOT IMPLEMENTED!
-//    [[NSNotificationCenter defaultCenter] postNotificationName:@"QSP_CALL_INPUTBOX" object:nil userInfo:params];
+    TRACE();
+    NSString *adaptedText = stringWithWideCharString(text);
+    if (!adaptedText) {
+        return;
+    }
+    NSDictionary *params = [NSDictionary dictionaryWithObject:adaptedText forKey:@"text"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"QSP_CALL_INPUTBOX" object:nil userInfo:params];
+}
+
+void qsp_adapter_showwindow(int type, QSP_BOOL isShow) {
+    TRACE();
+    NSNumber *number = [NSNumber numberWithBool:isShow];
+    NSNumber *typeNumber = [NSNumber numberWithInt:type];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:number, @"isShow", typeNumber, @"type", nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"QSP_CALL_SHOWWINDOW" object:nil userInfo:params];
+}
+
+void qsp_adapter_showmsgstr(const QSP_CHAR *str) {
+    TRACE();
+    NSString *adaptedText = stringWithWideCharString(str);
+    if (!adaptedText) {
+        return;
+    }
+    NSDictionary *params = [NSDictionary dictionaryWithObject:adaptedText forKey:@"str"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"QSP_CALL_SHOWMSGSTR" object:nil userInfo:params];
+}
+
+void qsp_adapter_setinputstrtext(const QSP_CHAR *text) {
+    TRACE();
+    NSString *adaptedText = stringWithWideCharString(text);
+    if (!adaptedText) {
+        return;
+    }
+    NSDictionary *params = [NSDictionary dictionaryWithObject:adaptedText forKey:@"text"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"QSP_CALL_SETINPUTSTRTEXT" object:nil userInfo:params];
 }
 
 // 
-
+// EXECString:
+// exec:
+// :1
+// <a href="1"></a>
+// <a href="exec:..."></a> --> execString(<href>)
+// :other -> system
 
 @implementation QSPAdapter
 
-@synthesize worldLoaded, gameInProgress;
+@synthesize worldLoaded, gameInProgress, updateTime, isSleep, msecsFromLastCount;
 
 SYNTHESIZE_SINGLETON_FOR_CLASS(QSPAdapter);
-
-
 
 - (void)registrateCallbacks {
     QSPSetCallBack(QSP_CALL_DEBUG, (void *)&qsp_adapter_debug);
@@ -230,8 +288,33 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(QSPAdapter);
     self = [super init];
     if (self) {
         QSPInit();
+        msecsFromLastCount = 0;
+        self.updateTime = 0.5f; // msecs
+        timer = [[NSTimer alloc] initWithFireDate:[NSDate date] interval:self.updateTime target:self selector:@selector(tickTimer) userInfo:nil repeats:YES];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTickTimerDelay:) name:@"QSP_CALL_SETTIMER" object:nil];
+        
+        [self registrateCallbacks];
     }
     return self;
+}
+/*! 
+ */
+- (void)updateTickTimerDelay:(NSNotification *)notification {
+    self.updateTime = [[[notification userInfo] objectForKey:@"msecs"] floatValue] / 1000.f;
+    timer = [[NSTimer alloc] initWithFireDate:[[NSDate date] addTimeInterval:self.updateTime] interval:self.updateTime target:self selector:@selector(tickTimer) userInfo:nil repeats:YES];
+}
+
+- (void)tickTimer {
+#pragma warning Dont remember about flags
+    @synchronized (msecsFromLastCount) {
+        msecsFromLastCount += self.updateTime * 1000;
+    }
+    [self execCounter:NO];
+}
+
+- (void)wakeUp {
+    isSleep = NO;
+    qsp_adapter_refreshhint(YES);
 }
 
 - (void)deInit {
@@ -304,14 +387,23 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(QSPAdapter);
 }
 
 - (NSInteger)getActionsCount {
+    if (isSleep) {
+        return 0;
+    }
     return QSPGetActionsCount();
 }
 
 - (BOOL)executeSelectedActionCode:(BOOL)isRefresh {
+    if (isSleep) {
+        return NO;
+    }
     return QSPExecuteSelActionCode(isRefresh);
 }
 
 - (BOOL)setSelectedActionIndex:(NSInteger)actionIndex isRefresh:(BOOL)isRefresh {
+    if (isSleep) {
+        return NO;
+    }
     return QSPSetSelActionIndex(actionIndex, isRefresh);
 }
 
@@ -339,7 +431,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(QSPAdapter);
     return QSPIsObjectsChanged();
 }
 
-#pragma warning Don't know how it works;
+#pragma warning Dont know how it works;
 - (void)showWindow:(NSInteger)type isShow:(BOOL)isShow {
     QSPShowWindow(type, isShow);
 }
@@ -416,7 +508,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(QSPAdapter);
 - (BOOL)getExpressionValue:(NSString *)string isString:(BOOL *)isString forNumberValue:(NSInteger *)numberValue forStringValue:(NSString *)stringValue {
     QSP_CHAR *cString = malloc(sizeof(char) * 1024);
     cString[1023] = 0x00; // For conversation to NSString
-    BOOL result = QSPGetExprValue(wideCharStringFromString(string), &isString, &numberValue, cString, 1024);
+    BOOL result = QSPGetExprValue(wideCharStringFromString(string), (void *)&isString, &numberValue, cString, 1024);
     stringValue = stringWithWideCharString(cString);
     return result;
 }
@@ -432,7 +524,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(QSPAdapter);
     QSPGetActionData(actionIndex, &imgPath, &desc);
     
     [actionData setIndex:actionIndex];
-    [actionData setDescription:stringWithWideCharString(desc)];
+    [actionData setDescription:[stringWithWideCharString(desc) stringByRemovinHTMLTags]];
     [actionData setImagePath:stringWithWideCharString(imgPath)];
     
     return [actionData autorelease];

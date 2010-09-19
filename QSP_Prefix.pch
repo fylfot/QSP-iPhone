@@ -8,5 +8,6 @@
     #import "CommonCategories.h"
     #import <AppRegistrator.h>
     #import "QSPAdapter.h"
+    #import "QSPAppDelegate.h"
     #import "Constants.h"
 #endif

@@ -9,6 +9,7 @@
 #import "PlayerMainMenu.h"
 #import "PlayerSettings.h"
 #import "Worlds.h"
+#import "World.h"
 #import "GameViewController.h"
 
 @implementation PlayerMainMenu
@@ -58,7 +59,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(PlayerMainMenu);
             if ([[QSPAdapter sharedQSPAdapter] isGameInProgress]) {
                 return 4;
             }
-            return 3;
+            return 2;
         }
     }
     return 0;
@@ -70,7 +71,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(PlayerMainMenu);
     
     static NSString *CellIdentifier = @"PlayerMainMenuCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell = nil;//[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
         CUSTOM_TABLE_CELL_MACROS(cell);
@@ -81,7 +82,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(PlayerMainMenu);
             case 0:
                 cell.textLabel.text = @"Select World";
                 if ([[QSPAdapter sharedQSPAdapter] isWorldLoaded]) {
-                    cell.detailTextLabel.text = [[QSPAdapter sharedQSPAdapter] getMainDesc];
+                    cell.detailTextLabel.text = [[World selected] description];
                     cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
                     cell.detailTextLabel.minimumFontSize = 12;
                 }
@@ -103,7 +104,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(PlayerMainMenu);
                 if (![[QSPAdapter sharedQSPAdapter] isGameInProgress]) {
                     cell.textLabel.text = @"Start Game";
                 } else {
-                    cell.textLabel.text = @"Restart Game";
+                    cell.textLabel.text = @"Resume Game";
                 }
 
                 cell.detailTextLabel.text = nil;
@@ -117,10 +118,10 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(PlayerMainMenu);
             case 2:
                 cell.textLabel.text = @"Save Game";
                 cell.detailTextLabel.text = nil;
-                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                cell.accessoryType = UITableViewCellAccessoryNone;
                 break;
             case 3:
-                cell.textLabel.text = @"Resume Game";
+                cell.textLabel.text = @"Restart Game";
                 cell.detailTextLabel.text = nil;
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 break;
@@ -140,11 +141,11 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(PlayerMainMenu);
     if (indexPath.section == 0) {
         switch (indexPath.row) {
             case 0:
-                [[[[UIApplication sharedApplication] delegate] navigationController] pushViewController:[[[Worlds alloc] init] autorelease] animated:YES];
+                [[(QSPAppDelegate *)[[UIApplication sharedApplication] delegate] navigationController] pushViewController:[[[Worlds alloc] init] autorelease] animated:YES];
                 break;
 
             case 1:
-                [[[[UIApplication sharedApplication] delegate] navigationController] pushViewController:[PlayerSettings sharedPlayerSettings] animated:YES];
+                [[(QSPAppDelegate *)[[UIApplication sharedApplication] delegate] navigationController] pushViewController:[PlayerSettings sharedPlayerSettings] animated:YES];
                 break;
             default:
                 break;
@@ -153,24 +154,40 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(PlayerMainMenu);
         switch (indexPath.row) {
             case 0:
                 if (![[QSPAdapter sharedQSPAdapter] isGameInProgress]) {
-                    [[[[UIApplication sharedApplication] delegate] navigationController] pushViewController:[[[GameViewController alloc] init] autorelease] animated:YES];
+                    [[(QSPAppDelegate *)[[UIApplication sharedApplication] delegate] navigationController] pushViewController:[[[GameViewController alloc] init] autorelease] animated:YES];
                 } else {
                     [[QSPAdapter sharedQSPAdapter] restartGame:YES];
-                    [[[[UIApplication sharedApplication] delegate] navigationController] pushViewController:[[[GameViewController alloc] init] autorelease] animated:YES];
+                    [[(QSPAppDelegate *)[[UIApplication sharedApplication] delegate] navigationController] pushViewController:[[[GameViewController alloc] init] autorelease] animated:YES];
                 }
                 break;
+            case 1:
+                [[QSPAdapter sharedQSPAdapter] saveGame:[NSString stringWithFormat:@"%@/temp.sav", [[UIApplication sharedApplication] documentsDirectory]] isRefresh:YES];
+                if ([[QSPAdapter sharedQSPAdapter] openSavedGame:[NSString stringWithFormat:@"%@/%@.sav", [[UIApplication sharedApplication] documentsDirectory], [[World selected] name]] isRefresh:NO]) {
+                    [[(QSPAppDelegate *)[[UIApplication sharedApplication] delegate] navigationController] pushViewController:[[[GameViewController alloc] init] autorelease] animated:YES];
+                } else {
+                    UIAlertViewQuick(@"Savegame", @"Savegame loading error", @"Ok");
+                    [[QSPAdapter sharedQSPAdapter] openSavedGame:[NSString stringWithFormat:@"%@/temp.sav", [[UIApplication sharedApplication] documentsDirectory]] isRefresh:YES];
+                }
+
+                break;
+                
+            case 2:
+                if ([[QSPAdapter sharedQSPAdapter] saveGame:[NSString stringWithFormat:@"%@/%@.sav", [[UIApplication sharedApplication] documentsDirectory], [[World selected] name]] isRefresh:NO]) {
+                    UIAlertViewQuick(@"Savegame", @"Savegame saving complete", @"Ok");
+                } else {
+                    UIAlertViewQuick(@"Savegame", @"Savegame saving error", @"Ok");
+                }
+                
+                break;
+            case 3:
+                [[QSPAdapter sharedQSPAdapter] restartGame:YES];
+                [[(QSPAppDelegate *)[[UIApplication sharedApplication] delegate] navigationController] pushViewController:[[[GameViewController alloc] init] autorelease] animated:YES];
+                break;
+                
             default:
                 break;
         }
     }
-    // Navigation logic may go here. Create and push another view controller.
-	/*
-	 <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-	 [self.navigationController pushViewController:detailViewController animated:YES];
-	 [detailViewController release];
-	 */
 }
 
 

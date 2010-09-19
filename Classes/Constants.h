@@ -15,3 +15,4 @@ if (indexPath.row == 0 && [tableView numberOfRowsInSection:indexPath.section] ==
 } \
 [[cell textLabel] setBackgroundColor:[UIColor clearColor]]; \
 [[cell detailTextLabel] setBackgroundColor:[UIColor clearColor]]
+

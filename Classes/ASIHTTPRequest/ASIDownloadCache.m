@@ -59,9 +59,10 @@ static NSString *permanentCacheFolder = @"PermanentStore";
 		BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:directory isDirectory:&isDirectory];
 		if (exists && !isDirectory) {
 			[[self accessLock] unlock];
-			[NSException raise:@"FileExistsAtCachePath" format:@"Cannot create a directory for the cache at '%@', because a file already exists",directory];
+			[NSException raise:@"FileExistsAtCachePath" format:@"Cannot create a directory for the cache at '%@', because a file already exists", directory];
 		} else if (!exists) {
-			[[NSFileManager defaultManager] createDirectoryAtPath:directory attributes:nil];
+            [[NSFileManager defaultManager] createDirectoryAtPath:directory withIntermediateDirectories:YES attributes:nil error:nil];
+//			[[NSFileManager defaultManager] createDirectoryAtPath:directory attributes:nil];
 			if (![[NSFileManager defaultManager] fileExistsAtPath:directory]) {
 				[[self accessLock] unlock];
 				[NSException raise:@"FailedToCreateCacheDirectory" format:@"Failed to create a directory for the cache at '%@'",directory];

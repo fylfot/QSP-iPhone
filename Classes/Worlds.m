@@ -66,6 +66,7 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [[[World allObjects] objectAtIndex:indexPath.row] select];
     [[QSPAdapter sharedQSPAdapter] loadGameWorld:[[[World allObjects] objectAtIndex:indexPath.row] relativePath]];
     [[QSPAdapter sharedQSPAdapter] restartGame:YES];
     [[PlayerMainMenu sharedPlayerMainMenu] update];

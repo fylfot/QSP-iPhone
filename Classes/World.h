@@ -44,7 +44,7 @@ typedef enum _WorldState WorldState;
 
 + (World *)selected;
 + (void)setSelected:(World *)newSelected;
-- (void)setSelected;
+- (void)select;
 + (void)setNewObjects:(NSArray *)newObjects;
 + (NSArray *)avalaibleWorlds;
 

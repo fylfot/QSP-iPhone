@@ -40,7 +40,7 @@ static NSUInteger MVChunkSize = 1024;
 - (BOOL)fileExistsAtPath {
     return [[NSFileManager defaultManager] fileExistsAtPath:self];
 }
-
+/*
 - (NSNumber *)fileSizeAtPath {
     NSDictionary *fileAttributes = [[NSFileManager defaultManager] fileAttributesAtPath:self traverseLink:YES];
     if (fileAttributes == nil) {
@@ -50,7 +50,7 @@ static NSUInteger MVChunkSize = 1024;
         return fileSize == nil ? [NSNumber numberWithInt:-1] : fileSize;
     }
 }
-
+*/
 - (NSString *)md5ForFileAtPath {
     NSFileHandle *handle = [NSFileHandle fileHandleForReadingAtPath:self];
 	if (handle == nil) {

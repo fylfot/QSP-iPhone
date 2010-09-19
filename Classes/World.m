@@ -50,7 +50,7 @@ static NSString *documentPathInstance = nil;
     selected = [newSelected retain];
 }
 
-- (void)setSelected {
+- (void)select {
     [World setSelected:self];
 }
 
@@ -138,7 +138,7 @@ static NSString *documentPathInstance = nil;
             NSFileHandle *file = [NSFileHandle fileHandleForReadingAtPath:newWorld.relativePath];
             newWorld.name = worldName;
             newWorld.fileHash = [file hash];
-            newWorld.description = [[QSPAdapter sharedQSPAdapter] getMainDesc];
+            newWorld.description = [[[QSPAdapter sharedQSPAdapter] getMainDesc] stringByRemovinHTMLTags];
             newWorld.isThirdParty = isAThirdParty;
             newWorld.currentState = WorldStateReady;
             [newWorld registrate];
