@@ -22,6 +22,11 @@
 
 #define MAX_CHARS_IN_CELL 24
 
+//#define STYLES @"font-family:\"%@\";font-size:%@;background-color:#777;text-shadow:0px -1px 1px #000;color:#fff"
+#define STYLES @"font-family:\"%@\";font-size:%@;"
+#define HTML_TEMPLATE_END [STYLES stringByAppendingString:@"'>%@</div>"]
+
+#define HTML_TEMPLATE [@"<div id='__iphone_size_hack' style='" stringByAppendingString:HTML_TEMPLATE_END]
 
 
 @implementation GameViewController
@@ -46,6 +51,8 @@
             }
             break;
         case INPUTBOX_VIEW_TAG:
+            [[QSPAdapter sharedQSPAdapter] setInputStringText:[(UITextField *)[[alertView subviews] lastObject] text]];
+            [[QSPAdapter sharedQSPAdapter] execUserInput:YES];
             break;
 
         default:
@@ -68,7 +75,7 @@
         entry.delegate = self;
         entry.textColor = [UIColor blackColor];
         entry.textAlignment = UITextAlignmentLeft;
-        entry.font = [UIFont systemFontOfSize:14.0];
+        entry.font = [UIFont systemFontOfSize:19.0];
         entry.placeholder = @"";
         
         entry.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -83,8 +90,9 @@
     }
     
     [alert show];
-    entry.frame = CGRectMake(14, (alert.frame.size.height - 116), 255, 29);
+    entry.frame = CGRectMake(14, (alert.frame.size.height - 114), 255, 29);
     [entry becomeFirstResponder];
+    [entry release];
     
     // TODO: make it
 }
@@ -253,8 +261,10 @@
             descriptionView.hidden = YES;
             inventoryView.hidden = YES;
         }
-        [sceneView loadHTMLString:[NSString stringWithFormat:@"<div id='__iphone_size_hack' style='font-family:\"%@\";font-size:%@;'>%@</div>", [[Settings sharedSettings] fontFamily], [[Settings sharedSettings] fontWeight], text] baseURL:[NSURL URLWithString:nil]];   
-        [layoutView scrollsToTop];
+        [sceneView loadHTMLString:[NSString stringWithFormat:HTML_TEMPLATE, [[Settings sharedSettings] fontFamily], [[Settings sharedSettings] fontWeight], text] baseURL:[NSURL URLWithString:nil]];   
+//        [layoutView setScrollsToTop:YES];
+//        [layoutView scrollsToTop];
+        // TODO: MAKE SCROLL!
     }
     
     if ([[QSPAdapter sharedQSPAdapter] isActionsChanged]) {
@@ -285,7 +295,13 @@
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-    NSLog(@"%@", [[request URL] absoluteString]);
+    NSString *url = [[request URL] absoluteString];
+    if ([url hasPrefix:@"EXEC:"]) {
+        NSString *sub = [url substringFromIndex:5];
+        sub = [sub stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        [[QSPAdapter sharedQSPAdapter] execString:sub isRefresh:YES];
+    }
+    return YES;
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
@@ -299,7 +315,9 @@
             sceneView.frame = CGRectMake(0, 0, 320, result);
             layoutView.contentSize = CGSizeMake(0, result + 216);
             actionView.frame = CGRectMake(0, sceneView.frame.size.height, 320, 216);
-            [layoutView scrollsToTop];
+            //[layoutView setScrollsToTop:YES];
+            //[layoutView scrollsToTop];
+            // TODO: MAKE SCROLL!
             break;
         case INVENTORY_VIEW_TAG: // See XIB
             break;

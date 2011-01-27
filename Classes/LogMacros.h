@@ -1,4 +1,4 @@
-#define CALL_POINT() [NSString stringWithFormat:@"%@", [NSString stringWithCString:__FUNCTION__]]
+#define CALL_POINT() [NSString stringWithFormat:@"%@", [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding]]
 
 //#ifdef DEBUG
 

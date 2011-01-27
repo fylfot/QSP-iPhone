@@ -18,7 +18,7 @@
     UIButton *descriptionButton;
     UIButton *inventoryButton;
     
-    UIScrollView *layoutView;
+    UITableView *layoutView;
     NSInteger countOfFastClicking;
     
     NSArray *resultForInventory;
@@ -35,7 +35,7 @@
 @property (nonatomic, retain) IBOutlet UIButton *descriptionButton;
 @property (nonatomic, retain) IBOutlet UIButton *inventoryButton;
 
-@property (nonatomic, retain) IBOutlet UIScrollView *layoutView;
+@property (nonatomic, retain) IBOutlet UITableView *layoutView;
 
 - (IBAction)descriptionButtonClicked:(id)sender;
 - (IBAction)inventoryButtonClicked:(id)sender;

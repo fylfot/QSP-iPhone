@@ -903,26 +903,26 @@ static QSP_BOOL qspStatementClear(QSPVariant *args, int count, QSP_CHAR **jumpTo
 	switch (extArg)
 	{
 	case 0:
-		if (qspClearText(&qspCurVars, &qspCurVarsLen))
+		if (qspClearText((void **)&qspCurVars, &qspCurVarsLen))
 			qspIsVarsDescChanged = QSP_TRUE;
 		break;
 	case 1:
-		if (qspClearText(&qspCurDesc, &qspCurDescLen))
+		if (qspClearText((void **)&qspCurDesc, &qspCurDescLen))
 			qspIsMainDescChanged = QSP_TRUE;
 		break;
 	case 2:
-		qspClearText(&qspCurInput, &qspCurInputLen);
+		qspClearText((void **)&qspCurInput, &qspCurInputLen);
 		qspCallSetInputStrText(0);
 		break;
 	case 3:
 		qspClearActions(QSP_FALSE);
 		break;
 	case 4:
-		if (qspClearText(&qspCurVars, &qspCurVarsLen))
+		if (qspClearText((void **)&qspCurVars, &qspCurVarsLen))
 			qspIsVarsDescChanged = QSP_TRUE;
-		if (qspClearText(&qspCurDesc, &qspCurDescLen))
+		if (qspClearText((void **)&qspCurDesc, &qspCurDescLen))
 			qspIsMainDescChanged = QSP_TRUE;
-		qspClearText(&qspCurInput, &qspCurInputLen);
+		qspClearText((void **)&qspCurInput, &qspCurInputLen);
 		qspClearActions(QSP_FALSE);
 		qspCallSetInputStrText(0);
 		break;

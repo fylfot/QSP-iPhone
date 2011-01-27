@@ -99,8 +99,8 @@
 00000000000000000000000000000000 9567304487d62996a1d6810bab923b75 ffffffffffffffffffffffffffffffff 102 /Users/test/Sandbox/Work/My/QSP/build/Debug-iphonesimulator/QSP.app.dSYM
 b0291e23f90f21cce1b57be9d59b3e92 c9ec2d4e7ac37135d4440c9bc844dd52 ffffffffffffffffffffffffffffffff 1020 /Users/test/Sandbox/Work/My/QSP/build/Debug-iphonesimulator/QSP.app
 f079fe9952b4ac4cc0c30bbc53df76a9 767c9df5984028709b07c15d1e55ec3e ffffffffffffffffffffffffffffffff 1211196 /Users/test/Sandbox/Work/My/QSP/build/Debug-iphonesimulator/QSP.app/QSP
-ffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffff 0 /var/folders/MF/MF8QdR6EE50ztJ9v5cxqJE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/QSP_Prefix-foeplhjiojpkfldaojljfymhvhot/QSP_Prefix.pch.gch
-ffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffff 0 /var/folders/MF/MF8QdR6EE50ztJ9v5cxqJE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/QSP_Prefix-elqlydsdrzoptvazogquqsgblcea/QSP_Prefix.pch.gch
+ffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffff 0 /var/folders/MF/MF8QdR6EE50ztJ9v5cxqJE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/QSP_Prefix-ekhkwuxgdzbllwggilfzbghgizvy/QSP_Prefix.pch.gch
+ffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffff 0 /var/folders/MF/MF8QdR6EE50ztJ9v5cxqJE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/QSP_Prefix-dtxrvwzeejllxmexoxuelerszpei/QSP_Prefix.pch.gch
 00000000000000000000000000000000 6647db12178fc0c106af28f317a08572 ffffffffffffffffffffffffffffffff 130197 /Users/test/Sandbox/Work/My/QSP/build/Debug-iphonesimulator/QSP.app/war_song.qsp
 00000000000000000000000000000000 cb4b7862bb8e9b4297c1114babb9da83 ffffffffffffffffffffffffffffffff 53827 /Users/test/Sandbox/Work/My/QSP/build/Debug-iphonesimulator/QSP.app/rullers_of_galaxy.qsp
 00000000000000000000000000000000 c29b0665b191bb2464caf0eb19a53b3b ffffffffffffffffffffffffffffffff 61126 /Users/test/Sandbox/Work/My/QSP/build/Debug-iphonesimulator/QSP.app/level_13.qsp
@@ -128,3 +128,5 @@ ffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffff ffffffffffffff
 000000004c569d7c0000000000006e6b e0abaed42ef26a568698a2db5081d441 ffffffffffffffffffffffffffffffff 3358 /Users/test/Sandbox/Work/My/QSP/build/Debug-iphonesimulator/QSP.app/MainWindow.nib
 00000000000000000000000000000000 47177dacb9e056e9f07210aa9a3d330b ffffffffffffffffffffffffffffffff 8 /Users/test/Sandbox/Work/My/QSP/build/Debug-iphonesimulator/QSP.app/PkgInfo
 00000000000000000000000000000000 47177dacb9e056e9f07210aa9a3d330b ffffffffffffffffffffffffffffffff 630 /Users/test/Sandbox/Work/My/QSP/build/Debug-iphonesimulator/QSP.app/Info.plist
+ffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffff 0 /var/folders/MF/MF8QdR6EE50ztJ9v5cxqJE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/QSP_Prefix-foeplhjiojpkfldaojljfymhvhot/QSP_Prefix.pch.gch
+ffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffff 0 /var/folders/MF/MF8QdR6EE50ztJ9v5cxqJE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/QSP_Prefix-elqlydsdrzoptvazogquqsgblcea/QSP_Prefix.pch.gch
